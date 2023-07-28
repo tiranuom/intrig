@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+.\\d+.\\d+$"
+    },
+    "lang": {
+      "type": "string",
+      "enum": ["ts", "js", "flutterCa"]
+    },
+    "type": {
+      "type": "string",
+      "enum": ["react", "vue", "angular"]
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["openApi2", "openApi3"]
+          },
+          "sourceType": {
+            "type": "string",
+            "enum": ["url", "file"]
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "required": ["sourceType"]
+          },
+          "file": {
+            "type": "string",
+            "required": ["sourceType"]
+          }
+        },
+        "required": ["name", "type", "sourceType"],
+        "if": {
+          "properties": { "sourceType": { "const": "url" } }
+        },
+        "then": {
+          "required": ["url"]
+        },
+        "else": {
+          "properties": { "sourceType": { "const": "file" } },
+          "required": ["file"]
+        }
+      }
+    }
+  },
+  "required": ["version", "type", "sources"]
+}

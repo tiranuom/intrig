@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "baseUrl": { "type": "string" },
+    "types": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/definitions/Schema" }
+    },
+    "controllers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "endpoints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "method": { "type": "string", "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"] },
+                "path": { "type": "string" },
+                "queryParameters": {
+                  "type": "array",
+                  "items": { "$ref": "#/definitions/Param" }
+                },
+                "pathParameters": {
+                  "type": "array",
+                  "items": { "$ref": "#/definitions/Param" }
+                },
+                "body": {
+                  "type": "array",
+                  "items": { "$ref": "#/definitions/Body" }
+                },
+                "encoding": { "type": "string" },
+                "description": { "type": "string" },
+                "tags": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "customHeaders": {
+                  "type": "array",
+                  "items": { "$ref": "#/definitions/Param" }
+                },
+                "response": {
+                  "type": "array",
+                  "items": { "$ref": "#/definitions/Body" }
+                },
+                "responseEncoding": { "type": "string" },
+                "errorResponses": {
+                  "type": "array",
+                  "items": { "$ref": "#/definitions/ErrorResponse" }
+                }
+              },
+              "required": ["name", "method", "path"]
+            }
+          }
+        },
+        "required": ["name", "endpoints"]
+      }
+    }
+  },
+  "required": ["name", "baseUrl", "controllers"],
+  "definitions": {
+    "Schema": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["string", "number", "boolean", "array", "object"] }
+      },
+      "required": ["name", "type"]
+    },
+    "Param": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["string", "number", "boolean", "array"] },
+        "required": { "type": "boolean" },
+        "description": { "type": "string" }
+      },
+      "required": ["name", "type", "required"]
+    },
+    "Body": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "required": { "type": "boolean" },
+        "description": { "type": "string" },
+        "encoding": { "type": "string" }
+      },
+      "required": ["type", "required"]
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "number" },
+        "type": { "type": "string" },
+        "description": { "type": "string" },
+        "encoding": { "type": "string" }
+      },
+      "required": ["status", "type", "description"]
+    }
+  }
+}
