@@ -68,3 +68,19 @@ export interface Config {
   lang: string
   sources: Array<Source>;
 }
+
+export interface EndpointContext {
+  name: string;
+  method: HttpMethod;
+  path: string;
+  queryParameters: Parameter[];
+  pathParameters: Parameter[];
+  body: Body;
+  encoding: string;
+  description: string;
+  tags: string[];
+  customHeaders: Parameter[];
+  response: Response;
+  responseEncoding: string;
+  errorResponses: ErrorResponse[];
+}

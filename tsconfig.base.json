@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@intrig/react-remote-intrig": [
+        "packages/react-remote-intrig/src/index.ts"
+      ],
+      "@intrig/react-remote-intrig-runtime": [
+        "packages/react-remote-intrig-runtime/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

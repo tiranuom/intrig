@@ -1,4 +1,5 @@
 import {CodeModificationRequest, modifyIndexContent, query} from "./chatGptIntegration";
+import * as process from "process";
 
 let pattern = /```typescript\n([^`]+)\n```/g;
 
