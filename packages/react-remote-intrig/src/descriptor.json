@@ -1,0 +1,48 @@
+{
+  "name": ".intrig",
+  "type": "dir",
+  "children": [
+    {
+      "name": "{{kebabCase it.name}}",
+      "type": "dir",
+      "each": "it.sources",
+      "children": [
+        {
+          "name": "types",
+          "type": "dir",
+          "children": [
+            {
+              "name": "{{kebabCase it.type}}.ts",
+              "type": "file",
+              "each": "it.types",
+              "content": {
+                "type": "function",
+                "content": "typeTemplate"
+              }
+            }
+          ]
+        },
+        {
+          "name": "{{kebabCase it.name}}",
+          "type": "dir",
+          "each": "it.controllers",
+          "children": [
+            {
+              "name": "use{{capitalize (camelCase it.name)}}.ts",
+              "type": "file",
+              "each": "it.endpoints",
+              "content": {
+                "type": "template",
+                "content": "hookTemplate"
+              },
+              "env": {
+                "types_dir": "../../../types/"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

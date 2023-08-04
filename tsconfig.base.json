@@ -20,7 +20,8 @@
       ],
       "@intrig/react-remote-intrig-runtime": [
         "packages/react-remote-intrig-runtime/src/index.ts"
-      ]
+      ],
+      "@intrig/template-engine": ["packages/template-engine/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
