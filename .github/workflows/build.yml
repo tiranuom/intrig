@@ -22,4 +22,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: npx nx build
+    - run: npx nx run-many --target=build --all
