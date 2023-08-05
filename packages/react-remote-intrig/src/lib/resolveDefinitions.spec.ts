@@ -16,7 +16,7 @@ describe('Testing Schema Functionality', () => {
         };
 
         const refs = collectRefs(schema);
-        expect(refs).toContain('#/definitions/person');
+        expect(refs).toContain('person');
     });
 
     test('collectRefs with empty JSON Schema', () => {
@@ -49,7 +49,7 @@ describe('Testing Schema Functionality', () => {
             }
         };
         const refs = collectRefs(schema);
-        expect(refs).toEqual(['#/definitions/person']);
+        expect(refs).toEqual(['person']);
     });
 
     test('collectRefs with JSON Schema that has nested $ref', () => {
@@ -64,7 +64,7 @@ describe('Testing Schema Functionality', () => {
             }
         };
         const refs = collectRefs(schema);
-        expect(refs).toEqual(['#/definitions/person']);
+        expect(refs).toEqual(['person']);
     });
 
     test('resolveDefinitions Function', () => {

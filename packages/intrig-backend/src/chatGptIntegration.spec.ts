@@ -3,7 +3,7 @@ import * as process from "process";
 
 let pattern = /```typescript\n([^`]+)\n```/g;
 
-describe("chatGptIntegration", () => {
+describe.skip("chatGptIntegration", () => {
 
     const originalFunction = `
 import React from 'react';

@@ -57,7 +57,6 @@ export function useCallIntegration<T>(requestMetadata: NetworkRequestMetadata): 
             setNetworkState(currentKey, errorState);
         }
     };
-
     const resetNetworkState = () => setNetworkState(currentKey, { status: 'idle' });
 
     return [getNetworkState(currentKey) as NetworkState<T>, makeRequest, resetNetworkState];

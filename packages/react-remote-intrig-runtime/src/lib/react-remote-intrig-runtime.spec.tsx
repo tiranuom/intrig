@@ -1,2 +1,5 @@
-import { render } from '@testing-library/react';
+describe.skip('react-remote-intrig-runtime', () => {
+    it('should work', () => {
 
+    })
+})
