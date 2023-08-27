@@ -15,11 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@intrig/react-remote-intrig": [
-        "packages/react-remote-intrig/src/index.ts"
+      "@intrig/react-rest-ts-intrig": [
+        "packages/react-rest-ts-intrig/src/index.ts"
       ],
-      "@intrig/react-remote-intrig-runtime": [
-        "packages/react-remote-intrig-runtime/src/index.ts"
+      "@intrig/react-rest-ts-intrig-runtime": [
+        "packages/react-rest-ts-intrig-runtime/src/index.ts"
       ],
       "@intrig/template-engine": ["packages/template-engine/src/index.ts"]
     }

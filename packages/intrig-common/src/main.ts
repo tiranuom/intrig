@@ -28,6 +28,7 @@ export interface ErrorResponse {
 }
 
 export interface Endpoint {
+  controller: string
   name: string;
   method: HttpMethod;
   path: string;
@@ -51,13 +52,14 @@ export interface Controller {
 export interface RestAPI {
   name: string;
   baseUrl: string;
-  controllers: Controller[];
+  endpoints: Endpoint[];
   types: { [key:string]: Schema}
 }
 
 export interface Source {
   name: string;
   type: string;
+  category: string
   sourceType: 'file' | 'url';
   url?: string;
   file?: string;
@@ -67,20 +69,4 @@ export interface Config {
   type: string;
   lang: string
   sources: Array<Source>;
-}
-
-export interface EndpointContext {
-  name: string;
-  method: HttpMethod;
-  path: string;
-  queryParameters: Parameter[];
-  pathParameters: Parameter[];
-  body: Body;
-  encoding: string;
-  description: string;
-  tags: string[];
-  customHeaders: Parameter[];
-  response: Response;
-  responseEncoding: string;
-  errorResponses: ErrorResponse[];
 }

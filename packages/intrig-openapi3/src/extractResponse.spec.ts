@@ -1,4 +1,4 @@
-import {extractResponse} from './extractControllers';
+import {extractResponse} from './extractEndpoints';
 
 describe('extractResponse', () => {
     it('should handle operations with status 200 response', () => {

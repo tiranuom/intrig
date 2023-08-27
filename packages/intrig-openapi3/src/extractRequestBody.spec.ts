@@ -1,4 +1,4 @@
-import { extractRequestBody } from './extractControllers'; // path to your file
+import { extractRequestBody } from './extractEndpoints'; // path to your file
 
 describe('extractRequestBody', () => {
     it('should extract request body correctly', () => {

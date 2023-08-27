@@ -1,4 +1,4 @@
-import {extractErrorResponses} from './extractControllers'
+import {extractErrorResponses} from './extractEndpoints'
 
 describe('extractErrorResponses', () => {
     it('should handle operations with 4xx and 5xx responses', () => {

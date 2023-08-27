@@ -1,36 +1,20 @@
-import {RestAPI, Config} from "../../intrig-common/src/main";
+import {RestAPI, Config, Source} from "../../intrig-common/src/main";
 
-interface Template {
-  lang: string;
-  type: string;
-}
-
-interface Source {
-  name: string;
-  type: string;
-  sourceType: string;
-  url?: string;
-  file?: string;
-}
 
 /**
  * Main function to generate boilerplate code from provided source according to the specified template
  *
- * @param inputData JSON object that conforms to defined schema
+ * @param config JSON object that conforms to defined schema
  * @returns Promise<void>
  */
-export async function generateBoilerplateFromSources(inputData: Config): Promise<void> {
-  const template: Template = {
-    lang: inputData.lang,
-    type: inputData.type
-  };
+export async function generateBoilerplateFromSources(config: Config): Promise<void> {
 
-  if (!isValidTemplate(template)) {
+  if (!isValidTemplate(config)) {
     console.log('Invalid template type');
     return;
   }
 
-  const sources: Source[] = inputData.sources;
+  const sources: Source[] = config.sources;
   for (let source of sources) {
     try {
       const parsedSchema = await loadSchema(source);
@@ -39,7 +23,7 @@ export async function generateBoilerplateFromSources(inputData: Config): Promise
         continue;
       }
 
-      generateBoilerplate(template, parsedSchema);
+      await generateBoilerplate(config, source, parsedSchema);
     } catch (error) {
       console.log('Error processing source:', error);
     }
@@ -53,7 +37,7 @@ export async function generateBoilerplateFromSources(inputData: Config): Promise
  * @param template Selected template with specified lang and type
  * @returns True if template is valid, false otherwise
  */
-function isValidTemplate(template: Template): boolean {
+function isValidTemplate(template: Config): boolean {
   return true;
 }
 
@@ -77,19 +61,20 @@ async function loadSchema(source: Source): Promise<RestAPI> {
 
 
 /**
- * Function to generate boilerplate code from parsed schema according to provided template
+ * Function to generate boilerplate code from parsed schema according to provided template configuration
  *
- * @param template Template configuration with specified lang and type
+ * @param config Template configuration with specified lang and type
+ * @param source API source to fetch schema from
  * @param parsedSchema Parsed API schema from source
  * @returns void
  */
-async function generateBoilerplate(template: Template, parsedSchema: RestAPI) {
+async function generateBoilerplate(config: Config, source: Source, parsedSchema: RestAPI) {
   try {
-    const libraryName = `${template.type}-${template.lang}-intrig`;
+    const libraryName = `${config.type}-${source.sourceType}-${config.lang}-intrig`;
     const boilerplateLibrary: any = await import(libraryName);
 
     // Let's assume the library has a generate() function
-    await boilerplateLibrary.generate(template, parsedSchema);
+    await boilerplateLibrary.generate(config, source, parsedSchema);
   } catch (error) {
     console.log(`Error when loading or using the boilerplate library: ${error.message}`);
   }

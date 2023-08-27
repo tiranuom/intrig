@@ -2,7 +2,7 @@ import axios from 'axios';
 import fs from 'fs';
 import { promisify } from 'util';
 import { Source, RestAPI } from '../../intrig-common/src/main';
-import {extractControllers} from "./extractControllers";
+import {extractEndpoints} from "./extractEndpoints";
 import {extractSchemaTypes} from "./extractSchemaTypes";
 import {extractBaseUrl} from "./extractBaseUrl";
 
@@ -14,7 +14,7 @@ export async function load(source: Source): Promise<RestAPI> {
     return {
         name: source.name,
         baseUrl: extractBaseUrl(data),
-        controllers: extractControllers(data),
+        endpoints: extractEndpoints(data),
         types: extractSchemaTypes(data)
     };
 }
