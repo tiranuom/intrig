@@ -15,13 +15,20 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@intrig/react-rest-ts-intrig": [
-        "packages/react-rest-ts-intrig/src/index.ts"
+      "@intrig/template-engine": ["packages/template-engine/src/index.ts"],
+      "@tiranuom/intrig-common": ["libs/shared/intrig-common/src/index.ts"],
+      "@tiranuom/intrig-openapi3": [
+        "libs/parsers/openapi3/intrig-common/src/index.ts"
       ],
-      "@intrig/react-rest-ts-intrig-runtime": [
-        "packages/react-rest-ts-intrig-runtime/src/index.ts"
+      "@tiranuom/intrig-openapiV3": [
+        "libs/parsers/intrig-openapi-v3/src/index.ts"
       ],
-      "@intrig/template-engine": ["packages/template-engine/src/index.ts"]
+      "@tiranuom/react-rest-ts-intrig": [
+        "libs/generators/react/react-rest-ts-intrig/src/index.ts"
+      ],
+      "@tiranuom/react-rest-ts-intrig-runtime": [
+        "libs/generators/react/react-rest-ts-intrig-runtime/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,52 @@
+{
+  "name": "generators-react--react-rest-ts-intrig-runtime",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/generators/react/react-rest-ts-intrig-runtime/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/generators/react/react-rest-ts-intrig-runtime/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/generators/react//react-rest-ts-intrig-runtime",
+        "tsConfig": "libs/generators/react/react-rest-ts-intrig-runtime/tsconfig.lib.json",
+        "project": "libs/generators/react/react-rest-ts-intrig-runtime/package.json",
+        "entryFile": "libs/generators/react/react-rest-ts-intrig-runtime/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/generators/react/react-rest-ts-intrig-runtime/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/generators/react/react-rest-ts-intrig-runtime/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  }
+}

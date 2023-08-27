@@ -1,0 +1,45 @@
+{
+  "name": "shared--intrig-common",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/intrig-common/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/intrig-common",
+        "tsConfig": "libs/shared/intrig-common/tsconfig.lib.json",
+        "packageJson": "libs/shared/intrig-common/package.json",
+        "main": "libs/shared/intrig-common/src/index.ts",
+        "assets": ["libs/shared/intrig-common/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs shared--intrig-common {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/shared/intrig-common/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/shared/intrig-common/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

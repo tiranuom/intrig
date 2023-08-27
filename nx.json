@@ -41,8 +41,8 @@
     "sharedGlobals": []
   },
   "workspaceLayout": {
-    "appsDir": "packages",
-    "libsDir": "packages"
+    "appsDir": "apps",
+    "libsDir": "libs"
   },
   "generators": {
     "@nx/react": {
