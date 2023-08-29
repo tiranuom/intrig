@@ -1,0 +1,36 @@
+---
+filePath: .intrig/{{kebabCase source}}/{{kebabCase controller}}/{{kebabCase name}}.ts
+dataPath: "$.endpoints"
+---
+
+import {useCallIntegration} from "{{integrationsLibrary}}";
+{{#if body}}
+import { {{body.type}} as InputType } from '../../types/{{kebabCase body.type}}'
+{{/if}}
+import { {{response.type}} as OutputType } from '../../types/{{kebabCase response.type}}'
+
+/**
+  * {{description}}
+  * @param key
+  * @returns [state, execute, reset]
+  */
+export function use{{capitalize (camelCase name)}}(key: string) {
+    let [state, execute, reset] = useCallIntegration<OutputType>({
+        domain: '{{domain}}',
+        method: '{{httpMethod}}',
+        url: '{{apiUrl}}',
+        key
+    })
+    return [state, (
+        {{#if pathParameters}} pathVariables: Record<string, string>, {{/if}}
+        {{#if body}} body: InputType, {{/if}}
+        optional?: {
+            params?: Record<string, string>,
+            headers?: Record<string, any>
+        }) => execute({
+        {{#if body}} body, {{/if}}
+        params: optional?.params,
+        headers: optional?.headers,
+        url: `{{interpolateUrl apiUrl 'pathVariables'}}`
+    }), reset]
+}
