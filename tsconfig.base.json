@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@intrig/template-engine": ["packages/template-engine/src/index.ts"],
+      "@tiranuom/intrig-cli": ["libs/intrig-cli/src/index.ts"],
       "@tiranuom/intrig-common": ["libs/shared/intrig-common/src/index.ts"],
       "@tiranuom/intrig-openapi3": [
         "libs/parsers/openapi3/intrig-common/src/index.ts"

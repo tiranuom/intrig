@@ -1,0 +1,45 @@
+{
+  "name": "intrig-cli",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/intrig-cli/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/intrig-cli",
+        "tsConfig": "libs/intrig-cli/tsconfig.lib.json",
+        "packageJson": "libs/intrig-cli/package.json",
+        "main": "libs/intrig-cli/src/index.ts",
+        "assets": ["libs/intrig-cli/*.md"]
+      }
+    },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs intrig-cli {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/intrig-cli/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/intrig-cli/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

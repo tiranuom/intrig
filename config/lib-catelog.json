@@ -1,0 +1,52 @@
+{
+  "generators": {
+    "react": {
+      "rest": {
+        "ts": {
+          "devDependencies": [
+            {
+              "name": "@tiranuom/react-rest-ts-intrig"
+            }
+          ],
+          "dependencies": [
+            {
+              "name": "@tiranuom/react-rest-ts-intrig-runtime"
+            }
+          ]
+        }
+      }
+    },
+    "angular": {
+      "rest": {
+        "ts": {
+          "devDependencies": [
+            {
+              "name": "@tiranuom/angular-rest-ts-intrig"
+            }
+          ],
+          "dependencies": [
+            {
+              "name": "@tiranuom/angular-rest-ts-intrig-runtime"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "parsers": {
+    "openapiV3": {
+      "devDependencies": [
+        {
+          "name": "@tiranuom/openapi-v3-parser"
+        }
+      ]
+    },
+    "openapiV2": {
+      "devDependencies": [
+        {
+          "name": "@tiranuom/openapi-v2-parser"
+        }
+      ]
+    }
+  }
+}

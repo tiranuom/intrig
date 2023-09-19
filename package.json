@@ -1,9 +1,9 @@
 {
-  "name": "@intrig/source",
-  "version": "0.0.0",
+  "name": "@tiranuom/intrig",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {},
-  "private": true,
+  "private": false,
   "bin": {
     "intrig": "./dist/apps/intrig-cli/main.js"
   },
