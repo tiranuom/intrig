@@ -1,8 +1,8 @@
 {
   "generators": {
     "react": {
-      "rest": {
-        "ts": {
+      "ts": {
+        "rest": {
           "devDependencies": [
             {
               "name": "@tiranuom/react-rest-ts-intrig"
@@ -17,8 +17,8 @@
       }
     },
     "angular": {
-      "rest": {
-        "ts": {
+      "ts": {
+        "rest": {
           "devDependencies": [
             {
               "name": "@tiranuom/angular-rest-ts-intrig"
